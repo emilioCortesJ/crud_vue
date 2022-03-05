@@ -136,6 +136,12 @@ export default {
               latitud: null,
               longitud: null,
             };
+          } else {
+            this.$swal({
+              title: 'Error!',
+              text: 'Un error ha ocurrido',
+              icon: 'error',
+            });
           }
         })
         .catch((err) => {
@@ -148,5 +154,6 @@ export default {
         });
     },
   },
+  components: {}
 };
 </script>
