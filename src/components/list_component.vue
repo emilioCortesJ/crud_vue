@@ -16,7 +16,7 @@
           <tbody>
             <tr v-for="cliente in clientes" :key="cliente.id_cliente">
               <td>{{ cliente.id_cliente }}</td>
-              <td>{{ cliente.nombre_cliente }}</td>
+              <td>{{ `${cliente.nombre_cliente} ${cliente.apellido_paterno_cliente} ${cliente.apellido_materno_cliente}` }}</td>
               <td>{{ cliente.correo }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="">

@@ -98,7 +98,7 @@
 export default {
   data() {
     return {
-       cliente: {
+      cliente: {
         id_cliente: null,
         nombre_cliente: '',
         apellido_paterno_cliente: '',
@@ -110,7 +110,7 @@ export default {
       },
     };
   },
-  created: function() {
+  created: function () {
     this.consultarEmpleado();
   },
   methods: {
@@ -122,19 +122,53 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           if (data.ok) {
-            let nombre = data.clientes[0].nombre_cliente.split(" ");
             this.cliente.id_cliente = data.clientes[0].id_cliente;
-            this.cliente.nombre_cliente = nombre[0];
-            this.cliente.apellido_paterno_cliente = nombre[1];
-            this.cliente.apellido_materno_cliente = nombre[2];
-            this.cliente.id_cliente = nombre[3];
+            this.cliente.nombre_cliente = data.clientes[0].nombre_cliente;
+            this.cliente.apellido_paterno_cliente =
+              data.clientes[0].apellido_paterno_cliente;
+            this.cliente.apellido_materno_cliente =
+              data.clientes[0].apellido_materno_cliente;
             this.cliente.correo = data.clientes[0].correo;
             this.cliente.edad = data.clientes[0].edad;
           }
         })
-        .catch(console.log);
+        .catch((err) => {
+          console.log(err);
+          this.$swal({
+            title: 'Error!',
+            text: 'Usuario no encontrado',
+            icon: 'error',
+            timer: 5000,
+          }).then(() => {
+            this.$router.push({name:"listar"});
+          });
+        });
+    },
+    editarCliente() {
+      fetch('http://localhost:8081/clientes/edit', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.cliente),
+      })
+      .then(res=>res.json())
+      .then((resultado) => {
+        if(resultado.ok){
+          this.$swal({
+            title: 'Succeso!',
+            text: 'Usuario actualizado',
+            icon: 'success',
+            timer: 5000,
+          }).then(() => {
+            this.$router.push({name:"listar"});
+          });
+        }
+      })
     },
   },
-  components: {}
+  components: {},
 };
 </script>
