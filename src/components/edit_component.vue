@@ -116,8 +116,7 @@ export default {
   methods: {
     consultarEmpleado() {
       fetch(
-        'http://localhost:8081/clientes/get?id_cliente=' +
-          this.$route.params.id_cliente
+        `${process.env.BASE_URL}/clientes/get?id_cliente=${this.$route.params.id_cliente}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -145,7 +144,7 @@ export default {
         });
     },
     editarCliente() {
-      fetch('http://localhost:8081/clientes/edit', {
+      fetch(`${process.env.BASE_URL}/clientes/edit`, {
         method: 'POST',
         mode: 'cors',
         headers: {

@@ -54,7 +54,7 @@ export default {
   methods: {
     // localhost:8081
     consultarEmpleados() {
-      fetch('http://localhost:8081/clientes/get')
+      fetch(`${process.env.BASE_URL}/clientes/get`)
         .then((res) => res.json())
         .then((data) => {
           this.clientes = [];
@@ -65,7 +65,7 @@ export default {
         .catch(console.log);
     },
     borrarCliente(id_cliente) {
-      fetch('http://localhost:8081/clientes/status', {
+      fetch(`${process.env.BASE_URL}/clientes/status`, {
         method: 'POST',
         mode: 'cors',
         headers: {

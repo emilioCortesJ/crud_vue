@@ -109,7 +109,7 @@ export default {
   methods: {
     agregarCliente() {
       console.log(JSON.stringify(this.cliente));
-      fetch('http://localhost:8081/clientes/add', {
+      fetch(`${process.env.BASE_URL}/clientes/add`, {
         method: 'POST',
         mode: 'cors',
         headers: {
