@@ -109,7 +109,7 @@ export default {
   methods: {
     agregarCliente() {
       console.log(JSON.stringify(this.cliente));
-      fetch(`${process.env.BASE_URL}/clientes/add`, {
+      fetch(`${process.env.VUE_APP_BASE_URL}/clientes/add`, {
         method: 'POST',
         mode: 'cors',
         headers: {
