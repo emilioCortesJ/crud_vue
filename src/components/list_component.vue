@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    Listar
+
+    <router-link to="/crear" class="btn btn-success">Agregar nuevo empleado</router-link>
+    <br>
+
     <div class="card">
       <div class="card-header">Clientes</div>
       <div class="card-body">

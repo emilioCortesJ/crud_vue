@@ -1,11 +1,12 @@
 <template>
-  <nav>
-    <router-link to="/crear">Crear</router-link> |
-    <router-link to="/editar/0">Editar</router-link> |
-    <router-link to="/listar">Listar</router-link>
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="nav navbar-nav">
+      <router-link to="/crear" class="nav-link">Crear</router-link>
+      <router-link to="/listar" class="nav-link" >Listar</router-link>
+    </div>
   </nav>
-  <router-view/>
+  <br>
+  <router-view />
 </template>
 
-<style>
-</style>
+<style></style>
